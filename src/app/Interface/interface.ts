@@ -1,4 +1,10 @@
-export class Interface {
+export interface  BotRow {
+  entityName: string;
+  botName: string;
+  entityId: string;
+  botConfigId: string;
+  status: 'Active' | 'Inactive';
+  action: string;
 }
 
 export interface UserTableRow {

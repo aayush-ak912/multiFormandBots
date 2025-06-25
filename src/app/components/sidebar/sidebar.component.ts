@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
-declare const $: any;
 declare interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
 }
+
 export const ROUTES: RouteInfo[] = [
-    { path: '/home', title: 'Home',  icon: 'dashboard', class: '' },
-    { path: '/entities', title: 'Entities',  icon:'person', class: '' },
-    { path: '/bots', title: 'Bots',  icon:'content_paste', class: '' }
+  { path: '/home', title: 'Home', icon: 'dashboard', class: '' },
+  { path: '/entities', title: 'Entities', icon: 'person', class: '' },
+  { path: '/bots', title: 'Bots', icon: 'smart_toy', class: '' }
 ];
 
 @Component({
@@ -19,17 +19,24 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  menuItems: any[];
+  menuItems: RouteInfo[] = [];
+  isMobile = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.menuItems = ROUTES;
+    this.updateMobileStatus();
   }
-  isMobileMenu() {
-      if ($(window).width() > 991) {
-          return false;
-      }
-      return true;
-  };
+
+ 
+
+  @HostListener('window:resize')
+  updateMobileStatus(): void {
+    this.isMobile = window.innerWidth <= 991;
+  }
+
+  isMobileMenu(): boolean {
+    return this.isMobile;
+  }
 }

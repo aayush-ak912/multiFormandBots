@@ -9,34 +9,34 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>Name</th>
-        <th>Status</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of usersTable">
-        <td>{{ user.name }}</td>
-        <td>
-          <span [class.text-success]="user.status === 'Active'" 
-                [class.text-danger]="user.status === 'Inactive'">
-            {{ user.status }}
-          </span>
-        </td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.phone }}</td>
-        <td>
-          <button class="btn btn-sm btn-primary">{{ user.action }}</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+              <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of usersTable">
+                    <td>{{ user.name }}</td>
+                    <td>
+                      <span [class.text-success]="user.status === 'Active'"
+                        [class.text-danger]="user.status === 'Inactive'">
+                        {{ user.status }}
+                      </span>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>
+                      <button class="btn btn-sm btn-primary">{{ user.action }}</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
           </div>
         </div>

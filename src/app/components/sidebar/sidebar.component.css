@@ -1,0 +1,16 @@
+.sidebar {
+  width: 260px;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  overflow: hidden;
+}
+
+.toggle-sidebar-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1001;
+}
