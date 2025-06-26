@@ -1,0 +1,26 @@
+/* Sidebar styles */
+.sidebar {
+  width: 260px;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+//   height: 100vh;
+  position: relative;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+/* Toggle Button styles */
+.toggle-sidebar-btn {
+  position: fixed;
+  top: 20px;
+  left: 270px; /* slightly outside the expanded sidebar */
+  z-index: 1050;
+  transition: left 0.3s ease;
+}
+
+/* Adjust position when collapsed */
+.sidebar.collapsed ~ .toggle-sidebar-btn {
+  left: 70px;
+}

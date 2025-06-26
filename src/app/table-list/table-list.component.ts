@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BotRow} from '../Interface/interface';
+import { Component, OnInit, Input } from '@angular/core';
+import { BotRow, CustomForm } from '../Interface/interface';
 
 @Component({
   selector: 'app-table-list',
@@ -7,36 +7,16 @@ import { BotRow} from '../Interface/interface';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent implements OnInit {
-   bots: BotRow[] = [
-    {
-      entityName: 'FinanceBot',
-      botName: 'BudgetHelper',
-      entityId: 'ENT123',
-      botConfigId: 'CFG987',
-      status: 'Active',
-      action: 'Edit'
-    },
-    {
-      entityName: 'HRBot',
-      botName: 'RecruiterPro',
-      entityId: 'ENT456',
-      botConfigId: 'CFG654',
-      status: 'Inactive',
-      action: 'Edit'
-    },
-    {
-      entityName: 'SupportBot',
-      botName: 'HelpDeskAI',
-      entityId: 'ENT789',
-      botConfigId: 'CFG321',
-      status: 'Active',
-      action: 'Edit'
-    }
-  ];
+  @Input() entityName: string = '';
+  @Input() section!: string;
+  @Input() filtered:any;
+  @Input() filteredBots: BotRow[] = [];
+  efPopup:boolean=false;
+
+   bots: BotRow[] = []
 
   constructor() { }
-
   ngOnInit() {
+    this.bots= JSON.parse(localStorage.getItem('bots'));
   }
-
 }

@@ -14,7 +14,7 @@ export class AdminLayoutComponent implements OnInit {
     private _router: Subscription;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
-    isSidebarCollapsed = true;
+    isSidebarCollapsed = false;
 
     constructor(public location: Location, private router: Router) { }
 

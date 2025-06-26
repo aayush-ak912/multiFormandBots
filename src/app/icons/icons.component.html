@@ -2,27 +2,26 @@
     <div class="container-fluid">
         <div class="card card-plain">
             <div class="card-header card-header-danger">
-                <h4 class="card-title">[[BOTNAME]]</h4>
+                <h4 class="card-title">[[ {{userName}} ]]</h4>
             </div>
             <div class="row">
                 <mat-tab-group>
-                    <mat-tab label="Overview">
-                        <p>This is the Overview tab content.</p>
+                    <mat-tab label="Bots">
+                        <app-table-list [entityName]="userName" [filtered]="filteredBots"></app-table-list>
                     </mat-tab>
-
-                    <mat-tab label="Details">
-                        <p>This is the Details tab content.</p>
+                    
+                    <mat-tab label="Forms">
+                        <app-table-list [entityName]="userName" [section]="'Form'" [filtered]="filteredForms"></app-table-list>
                     </mat-tab>
-
-                    <mat-tab label="Settings">
-                        <p>This is the Settings tab content.</p>
+                    
+                    <mat-tab label="flows">
+                        <app-table-list [entityName]="userName" [section]="'Flows'" [filtered]="filteredFlows"></app-table-list>
                     </mat-tab>
-
-                    <mat-tab label="Logs">
-                        <p>This is the Logs tab content.</p>
+                    
+                    <mat-tab label="Skins">
+                        <app-table-list [entityName]="userName" [section]="'Skins'" [filtered]="skins"></app-table-list>
                     </mat-tab>
                 </mat-tab-group>
-
             </div>
         </div>
     </div>

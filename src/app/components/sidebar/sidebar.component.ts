@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Input} from '@angular/core';
 
 declare interface RouteInfo {
   path: string;
@@ -8,7 +8,7 @@ declare interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-  { path: '/home', title: 'Home', icon: 'dashboard', class: '' },
+  { path: '', title: 'Home', icon: 'dashboard', class: '' },
   { path: '/entities', title: 'Entities', icon: 'person', class: '' },
   { path: '/bots', title: 'Bots', icon: 'smart_toy', class: '' }
 ];
@@ -19,6 +19,7 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  @Input() small: boolean =false;
   menuItems: RouteInfo[] = [];
   isMobile = false;
 
