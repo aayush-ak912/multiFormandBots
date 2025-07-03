@@ -1,0 +1,52 @@
+.maps-container {
+  display: flex;
+  height: 80vh;
+}
+
+.toolbox {
+  width: 300px;
+  border-right: 1px solid #ccc;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+}
+
+.tabs .btn.active {
+  font-weight: bold;
+  border: 2px solid #007bff;
+}
+
+.flow-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100vh;
+}
+
+.flow-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+
+.step-box {
+  background-color: #f1f1f1;
+  min-width: 150px;
+  text-align: center;
+}
+.cdk-drag-preview {
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  overflow: visible !important;
+}
+
+:host.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  width: 350px;
+  max-height: 600px;
+}

@@ -45,3 +45,7 @@ export interface Skin {
   enabled: boolean;
 }
 
+export interface Message {
+  sender: string;
+  message: string;
+}

@@ -1,1 +1,85 @@
-<div id="map"></div>
+<div class="maps-container d-flex">
+
+    <!-- 🧰 LEFT TOOLBOX -->
+    <div class="toolbox p-3">
+
+        <!-- Tabs -->
+        <div class="tabs mb-3">
+            <button class="btn btn-outline-primary mr-2" [class.active]="activeTab === 'bots'"
+                (click)="activeTab = 'bots'">
+                Bots
+            </button>
+            <button class="btn btn-outline-secondary" [class.active]="activeTab === 'forms'"
+                (click)="activeTab = 'forms'">
+                Forms
+            </button>
+        </div>
+
+        <!-- Bots List -->
+        <div *ngIf="activeTab === 'bots'">
+            <div *ngFor="let bot of filteredBots" class="card mb-2" (click)="addBot(bot)">
+                <div class="card-body" style="background-color: #e3f2fd;">
+                    <h6 class="card-title mb-1">{{ bot.botName }}</h6>
+                    <p class="card-text text-muted mb-0">Entity: {{ bot.entityName }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms List -->
+        <div *ngIf="activeTab === 'forms'">
+            <div *ngFor="let form of filteredForms" class="card mb-2" (click)="addForm(form)">
+                <div class="card-body" style="background-color: #fce4ec;">
+                    <h6 class="card-title mb-1">{{ form.formName }}</h6>
+                    <p class="card-text text-muted mb-0">Entity: {{ form.entityName }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✏️ RIGHT FLOW EDITOR -->
+    <div class="flow-editor d-flex flex-column flex-grow-1 p-3 bg-white shadow">
+
+        <!-- Main content scrollable -->
+        <div class="flow-content flex-grow-1 overflow-auto">
+            <h5 class="mb-3">Editing Flow: {{ SelectedFlow?.flowName }}</h5>
+
+            <!-- Flow Steps Drop Area -->
+            <div cdkDropList [cdkDropListData]="SelectedFlow.steps" class="flow-steps d-flex flex-wrap"
+                (cdkDropListDropped)="onDrop($event)">
+                <ng-container *ngFor="let step of SelectedFlow.steps; let i = index">
+                    <div class="step-box m-2 p-2 border rounded d-flex align-items-center justify-content-between"
+                        cdkDrag>
+                        <div>
+                            <strong>{{ step.type | titlecase }}</strong>: {{ step.name }}
+                        </div>
+                        <button class="btn btn-sm btn-danger ml-2" (click)="removeStep(i)">✕</button>
+                    </div>
+                    <span *ngIf="i < SelectedFlow?.steps?.length - 1" class="align-self-center mx-2">→</span>
+                </ng-container>
+            </div>
+
+            <div *ngIf="SelectedFlow?.steps?.length === 0" class="text-muted mt-3">
+                Click a bot or form from the toolbox to start building your flow.
+            </div>
+        </div>
+
+        <!-- ✅ Save/Update Flow Button - pinned bottom -->
+        <div class="pt-3 border-top text-right">
+            <button class="btn btn-success" (click)="saveOrUpdateFlow()" [disabled]="!SelectedFlow?.steps?.length">
+                💾 Save / Update Flow
+            </button>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- 🤖 Chat Bot pinned in bottom-right -->
+<app-upgrade
+  [SelectedFlow]="SelectedFlow"
+  [botList]="filteredBots"
+  [formList]="filteredForms"
+  class="chat-widget">
+</app-upgrade>

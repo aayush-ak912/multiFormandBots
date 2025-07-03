@@ -11,12 +11,17 @@ export class TableListComponent implements OnInit {
   @Input() section!: string;
   @Input() filtered:any;
   @Input() filteredBots: BotRow[] = [];
-  efPopup:boolean=false;
-
-   bots: BotRow[] = []
+  isPopupVisible:boolean=false;
+  selectedFlow:string='';
+  bots: BotRow[] = []
 
   constructor() { }
   ngOnInit() {
     this.bots= JSON.parse(localStorage.getItem('bots'));
   }
+  togglePopup(s:string){
+    this.isPopupVisible=true;
+    this.selectedFlow=s;
+  }
+  
 }

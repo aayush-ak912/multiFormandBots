@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-danger d-flex align-items-center">
+                    <div  class="card-header card-header-danger d-flex align-items-center"
+                        style="z-index: 500 !important;">
                         <h4 class="card-title mb-0"> <span *ngIf="section">[[ {{section}} ]]</span> <span
                                 *ngIf="!section">Bot's</span></h4>
                         <button class="btn btn-primary ml-auto">New</button>
@@ -115,7 +116,7 @@
                                         </td>
                                         <td>
                                             <button class="btn btn-sm btn-primary"
-                                                (click)="efPopup">Edit</button>
+                                                (click)="togglePopup(flow)">Edit</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -135,7 +136,7 @@
                                         <td>{{ skin.skinName }}</td>
                                         <td>{{ skin.botName }}</td>
                                         <td>
-                                           <input type="checkbox" [(ngModel)]="skin.enabled" />
+                                            <input type="checkbox" [(ngModel)]="skin.enabled" />
                                         </td>
                                     </tr>
                                 </tbody>
@@ -147,4 +148,16 @@
             </div>
         </div>
     </div>
+    <!-- Flow Edit Popup -->
+    <div class="popup" *ngIf="isPopupVisible">
+        <div class="popup-content bg-light">
+            <div class="popup-header">
+                <button class="close-btn" (click)="isPopupVisible=false">X</button>
+            </div>
+            <div class="popup-body">
+                <app-maps [SelectedFlow]="selectedFlow" [entityName]="entityName"></app-maps>
+            </div>
+        </div>
+    </div>
+    
 </div>

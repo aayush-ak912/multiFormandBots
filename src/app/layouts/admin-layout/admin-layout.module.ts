@@ -18,6 +18,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatTabsModule
+    MatTabsModule,
+    DragDropModule,
   ],
   declarations: [
     DashboardComponent,
